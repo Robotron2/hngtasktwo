@@ -8,6 +8,10 @@ export const createPersonController = async (req, res) => {
 	// console.log(nameSplit)
 
 	try {
+		if (!isNaN(name)) {
+			throw Error("You are required to provide a name, not a number")
+		}
+
 		if (!name) {
 			throw Error("You are required to provide a name.")
 		}
@@ -59,24 +63,27 @@ export const getPersonController = async (req, res) => {
 export const updatePersoController = async (req, res) => {
 	const { _id } = req.params
 	let { newName } = req.body
-
-	const nameSplit = newName.split(" ")
-	// console.log(nameSplit)
-	if (nameSplit.length == 1) {
-		newName = _.upperFirst(nameSplit[0])
-	} else if (nameSplit.length >= 2) {
-		newName = []
-		for (let i = 0; i < nameSplit.length; i++) {
-			nameSplit[i] = _.upperFirst(nameSplit[i])
-			newName.push(nameSplit[i])
-		}
-		const customSeparator = " "
-		newName = newName.join(customSeparator)
-	}
-
-	const exists = await personModel.findOne({ name: newName })
-
 	try {
+		if (!isNaN(newName)) {
+			throw Error("You are required to provide a name, not a number")
+		}
+
+		const nameSplit = newName.split(" ")
+		// console.log(nameSplit)
+		if (nameSplit.length == 1) {
+			newName = _.upperFirst(nameSplit[0])
+		} else if (nameSplit.length >= 2) {
+			newName = []
+			for (let i = 0; i < nameSplit.length; i++) {
+				nameSplit[i] = _.upperFirst(nameSplit[i])
+				newName.push(nameSplit[i])
+			}
+			const customSeparator = " "
+			newName = newName.join(customSeparator)
+		}
+
+		const exists = await personModel.findOne({ name: newName })
+
 		const match = await personModel.findById(_id)
 		if (!match) {
 			throw Error("Error, you must provide a valid id to continue with this operation.")
