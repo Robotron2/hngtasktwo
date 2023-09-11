@@ -1,5 +1,5 @@
 import express from "express"
-import { createPersonController, getPersonController } from "../controllers/personControllers.js"
+import { createPersonController, deletePersoController, getPersonController, updatePersoController } from "../controllers/personControllers.js"
 
 const router = express.Router()
 
@@ -8,9 +8,12 @@ router.post("/", createPersonController)
 
 //Read
 router.get("/:_id", getPersonController)
+
 //Update
+router.put("/:_id", updatePersoController)
 
 //Delete
+router.delete("/:_id", deletePersoController)
 
 export default router
 /*
