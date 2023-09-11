@@ -1,11 +1,31 @@
 import personModel from "../models/personModel.js"
+import _ from "lodash"
 
 export const createPersonController = async (req, res) => {
-	const { name } = req.body
+	let { name } = req.body
+
+	// const nameSplit = name.split(" ")
+	// console.log(nameSplit)
+
 	try {
 		if (!name) {
 			throw Error("You are required to provide a name.")
 		}
+		const nameSplit = name.split(" ")
+		// console.log(nameSplit)
+		if (nameSplit.length == 1) {
+			name = _.upperFirst(nameSplit[0])
+		} else if (nameSplit.length >= 2) {
+			name = []
+			for (let i = 0; i < nameSplit.length; i++) {
+				nameSplit[i] = _.upperFirst(nameSplit[i])
+				name.push(nameSplit[i])
+			}
+			const customSeparator = " "
+			name = name.join(customSeparator)
+		}
+
+		console.log(name)
 
 		const exists = await personModel.findOne({ name })
 
@@ -16,7 +36,7 @@ export const createPersonController = async (req, res) => {
 			name
 		})
 
-		console.log(person)
+		// console.log(person)
 		res.status(200).json({ success: true, person, message: "Person created successfully." })
 	} catch (error) {
 		console.log(error.message)
@@ -38,7 +58,21 @@ export const getPersonController = async (req, res) => {
 }
 export const updatePersoController = async (req, res) => {
 	const { _id } = req.params
-	const { newName } = req.body
+	let { newName } = req.body
+
+	const nameSplit = newName.split(" ")
+	// console.log(nameSplit)
+	if (nameSplit.length == 1) {
+		newName = _.upperFirst(nameSplit[0])
+	} else if (nameSplit.length >= 2) {
+		newName = []
+		for (let i = 0; i < nameSplit.length; i++) {
+			nameSplit[i] = _.upperFirst(nameSplit[i])
+			newName.push(nameSplit[i])
+		}
+		const customSeparator = " "
+		newName = newName.join(customSeparator)
+	}
 
 	const exists = await personModel.findOne({ name: newName })
 
