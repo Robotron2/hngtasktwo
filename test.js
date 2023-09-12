@@ -26,7 +26,8 @@ describe("Person API", () => {
 	it("should retrieve person record using unique ID", (done) => {
 		// chai.request("http://localhost:8080/api")
 		chai.request("https://theophilus-hng-task-two.onrender.com/api")
-			.get(`/${createdPersonId}`)
+			.get("/")
+			.send({ _id: `${createdPersonId}` })
 			.end((err, res) => {
 				expect(res.body).to.have.property("message").eq("Person found.")
 				done()
@@ -37,8 +38,8 @@ describe("Person API", () => {
 	it("should update a person by ID", (done) => {
 		// chai.request("http://localhost:8080/api")
 		chai.request("https://theophilus-hng-task-two.onrender.com/api")
-			.put(`/${createdPersonId}`)
-			.send({ newName: "Mark Essien" })
+			.put("/")
+			.send({ newName: "Mark Essien", _id: `${createdPersonId}` })
 			.end((err, res) => {
 				expect(res.body).to.have.property("message").eq("Person updated successfully!")
 				done()
@@ -49,7 +50,8 @@ describe("Person API", () => {
 	it("should delete a person by ID", (done) => {
 		// chai.request("http://localhost:8080/api")
 		chai.request("https://theophilus-hng-task-two.onrender.com/api")
-			.delete(`/${createdPersonId}`)
+			.delete("/")
+			.send({ _id: `${createdPersonId}` })
 			.end((err, res) => {
 				expect(res.body).to.have.property("message").eq("Person deleted successfully!")
 				done()

@@ -7,13 +7,13 @@ const router = express.Router()
 router.post("/", createPersonController)
 
 //Read
-router.get("/:_id", getPersonController)
+router.get("/", getPersonController)
 
 //Update
-router.put("/:_id", updatePersoController)
+router.put("/", updatePersoController)
 
 //Delete
-router.delete("/:_id", deletePersoController)
+router.delete("/", deletePersoController)
 
 export default router
 /*
