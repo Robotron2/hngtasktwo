@@ -137,7 +137,7 @@ export default connectDB
     ```
 
 
-**For more documentation, visit ** `https://documenter.getpostman.com/view/23278903/2s9YC2ztsR`
+**For more documentation, visit** `https://documenter.getpostman.com/view/23278903/2s9YC2ztsR`
 
 ## Testing
 
