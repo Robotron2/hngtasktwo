@@ -29,7 +29,7 @@ export const createPersonController = async (req, res) => {
 			name = name.join(customSeparator)
 		}
 
-		// console.log(name)
+		console.log(name)
 
 		const exists = await personModel.findOne({ name })
 
@@ -49,12 +49,8 @@ export const createPersonController = async (req, res) => {
 }
 
 export const getPersonController = async (req, res) => {
-	// const { _id } = req.params
-	const { _id } = req.body
+	const { _id } = req.params
 	try {
-		if (!_id) {
-			throw Error("You are to provide a valid id in order to get the details of the person")
-		}
 		const person = await personModel.findById(_id)
 		if (!person) {
 			throw Error("Person not found!")
@@ -65,13 +61,11 @@ export const getPersonController = async (req, res) => {
 	}
 }
 export const updatePersoController = async (req, res) => {
-	let { newName, _id } = req.body
+	const { _id } = req.params
+	let { newName } = req.body
 	try {
 		if (!isNaN(newName)) {
 			throw Error("You are required to provide a name, not a number")
-		}
-		if (!_id) {
-			throw Error("You are to provide a valid id to continue with the operation.")
 		}
 
 		const nameSplit = newName.split(" ")
@@ -111,11 +105,8 @@ export const updatePersoController = async (req, res) => {
 	}
 }
 export const deletePersoController = async (req, res) => {
-	const { _id } = req.body
+	const { _id } = req.params
 	try {
-		if (!_id) {
-			throw Error("You are to provide a valid id to continue with the operation.")
-		}
 		const exists = await personModel.findById(_id)
 		if (!exists) {
 			throw Error("Error, you must provide a valid id to continue with this operation.")
