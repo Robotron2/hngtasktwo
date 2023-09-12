@@ -11,13 +11,13 @@ The Person API is a simple yet powerful RESTful web service that allows you to m
 The Person API offers the following features:
 
 1. **Create a Person**:
-   - Create a new person record with a name and age.
+   - Create a new person record with a name.
 
 2. **Retrieve Persons**:
    - Retrieve a list of all persons stored in the database.
 
 3. **Update Person Information**:
-   - Update a person's age by providing their unique ID.
+   - Update a person's name by providing their unique ID.
 
 4. **Delete Person**:
    - Delete a person's record by specifying their unique ID.
@@ -45,7 +45,7 @@ To begin using the Person API, follow these steps:
 
 - **HTTP Method**: POST
 - **Endpoint**: `https://theophilus-hng-task-two.onrender.com/api`
-- **Description**: Create a new person with a name and age.
+- **Description**: Create a new person with a name property.
 - **Request Body**:
   ```json
   {
@@ -62,7 +62,7 @@ To begin using the Person API, follow these steps:
     }
     ```
 
-### Retrieve Persons
+### Retrieve Person
 
 - **HTTP Method**: GET
 - **Endpoint**: `https://theophilus-hng-task-two.onrender.com/api/:userId`
