@@ -35,9 +35,10 @@ Before you start using the Person API, ensure you have the following:
 To begin using the Person API, follow these steps:
 
 1. Clone the GitHub repository: `git clone https://github.com/Robotron2/hngtasktwo.git`
-2. Install project dependencies using `npm install`.
-3. Configure your MongoDB connection settings in the `db.js` file inside the `config` folder.
-4. DB configuration
+2. cd into `hngtasktwo` folder if you used a command line to clone.
+3. Install project dependencies using `npm install`.
+4. Configure your MongoDB connection settings in the `db.js` file inside the `config` folder.
+5. DB configuration
 ```
 import mongoose from "mongoose"
 
@@ -137,7 +138,7 @@ export default connectDB
     ```
 
 
-**For more documentation, visit** `https://documenter.getpostman.com/view/23278903/2s9YC2ztsR`
+**For more documentation, visit**  `https://documenter.getpostman.com/view/23278903/2s9YC2ztsR`
 
 ## Testing
 
