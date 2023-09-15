@@ -11,7 +11,7 @@ The Person API is a simple yet powerful RESTful web service that allows you to m
 The Person API offers the following features:
 
 1. **Create a Person**:
-   - Create a new person record with a name.
+   - Create a new person record with a name as a string only.
 
 2. **Retrieve Persons**:
    - Retrieve the record of the person stored in the database using their unique ID.
